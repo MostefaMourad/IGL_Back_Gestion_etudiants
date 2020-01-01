@@ -13,7 +13,7 @@ class UpdateEtudiantRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,12 +25,16 @@ class UpdateEtudiantRequest extends FormRequest
     {
         return [
             'email' => 'max:255|email|unique:etudiants',  
-            'password' => 'min:6',  
+            'password' => 'min:6',
+            'nom' => 'max:25',
+            'prenom' => 'max:25',  
             'niveau' => 'max:3',
             'section' => 'max:1|nullable',
             'groupe' => 'integer|nullable',
             'spacialite' => 'max:3|nullable',
-            'adresse' => 'max:100',
+            'date_naissance' => 'date_format:Y-m-d|before:today|nullable',
+            'adresse' => 'max:100|',
+            'indicateur_promo' => 'max:1|required'
         ];
     }
 }
