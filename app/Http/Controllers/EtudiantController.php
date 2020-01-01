@@ -6,6 +6,7 @@ use App\Etudiant;
 use App\Helpers \APIHelpers;
 use Illuminate\Http\Request;
 use App\Http\Requests\AjoutEtudiantRequest;
+use App\Http\Requests\UpdateEtudiantRequest;
 
 class EtudiantController extends Controller
 {
@@ -77,7 +78,7 @@ class EtudiantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEtudiantRequest $request, $id)
     {
         $etudiant = Etudiant::find($id);
         if ($etudiant == null) {
@@ -86,15 +87,11 @@ class EtudiantController extends Controller
         } else {
             $etudiant->email = $request->email;
             $etudiant->password = $request->password;
-            $etudiant->nom = $request->nom;
-            $etudiant->prenom = $request->prenom;
             $etudiant->niveau = $request->niveau;
             $etudiant->section = $request->section;
             $etudiant->groupe = $request->groupe;
             $etudiant->specialite = $request->specialite;
-            $etudiant->date_naissance = $request->date_naissance;
             $etudiant->adresse = $request->adresse;
-            $etudiant->indicateur_promo = $request->indicateur_promo;
             $etudiant_save = $etudiant->save();
             if ($etudiant_save) {
                 $response = APIHelpers::createAPIResponse(false, 200, 'Modification avec succes', null);
