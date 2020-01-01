@@ -24,7 +24,13 @@ class UpdateEtudiantRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => 'max:255|email|unique:etudiants',  
+            'password' => 'min:6',  
+            'niveau' => 'max:3',
+            'section' => 'max:1|nullable',
+            'groupe' => 'integer|nullable',
+            'spacialite' => 'max:3|nullable',
+            'adresse' => 'max:100',
         ];
     }
 }

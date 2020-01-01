@@ -2,6 +2,7 @@
 
 
 namespace App\Helpers ;
+
 class APIHelpers {
 
    public static function createAPIResponse($is_error,$code,$message,$content){
