@@ -123,8 +123,8 @@ class EtudiantController extends Controller
 
             $etudiant_delete = $etudiant->delete();
             if ($etudiant_delete) {
-                $response = APIHelpers::createAPIResponse(false, 204, 'Suppression avec succes', null);
-                return response()->json($response, 204);
+                $response = APIHelpers::createAPIResponse(false, 200,'Suppression avec succes', $etudiant);
+                return response()->json($response, 200);
             } else {
                 $response = APIHelpers::createAPIResponse(true, 400, 'echec', null);
                 return response()->json($response, 400);

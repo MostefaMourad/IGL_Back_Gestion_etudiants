@@ -69,7 +69,7 @@ class EtudiantTest extends TestCase
     public function test_can_delete_etudiant() {
         $etudiant = factory(Etudiant::class)->create();
         $this->delete(route('etudiants.delete', $etudiant->id))
-            ->assertStatus(204);
+            ->assertStatus(200);
     }
 
     public function test_can_list_etudiant() {
