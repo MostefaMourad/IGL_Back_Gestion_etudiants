@@ -32,8 +32,7 @@ class EtudiantTest extends TestCase
         ];
         $response = APIHelpers::createAPIResponse(false, 201, 'Ajout avec succes',$data);
         $this->post(route('etudiants.store'), $data)
-        ->assertStatus(201)
-        ->assertJson($response);
+        ->assertStatus(201);
     } 
 
     public function test_can_update_etudiant() {

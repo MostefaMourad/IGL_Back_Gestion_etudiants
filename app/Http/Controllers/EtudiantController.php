@@ -44,7 +44,7 @@ class EtudiantController extends Controller
         $new_etudiant->indicateur_promo = $request->indicateur_promo;
         $etudiant_save = $new_etudiant->save();
         if ($etudiant_save) {
-            $response = APIHelpers::createAPIResponse(false, 201, 'Ajout avec succes', $new_etudiant);
+            $response = APIHelpers::createAPIResponse(false, 201, 'Ajout avec succes', $request);
             return response()->json($response, 201);
         } else {
             $response = APIHelpers::createAPIResponse(true, 400, 'echec', null);
