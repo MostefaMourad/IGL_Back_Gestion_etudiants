@@ -35,5 +35,11 @@ class UpdateEtudiantRequest extends FormRequest
             'date_naissance' => 'required|date_format:Y-m-d|before:today',
             'adresse' => 'required|max:100|',
             'indicateur_promo' => 'max:1|required'
+        ];
+        
+        }
+    public function wantsJson()
+    {
+        return true;
     }
 }
