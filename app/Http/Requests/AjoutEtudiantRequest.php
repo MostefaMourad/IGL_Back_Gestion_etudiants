@@ -32,7 +32,7 @@ class AjoutEtudiantRequest extends FormRequest
             'section' => 'max:1|nullable',
             'groupe' => 'integer|nullable',
             'spacialite' => 'max:3|nullable',
-            'date_naissance' => 'required|date_format:Y-m-d|before:today|nullable',
+            'date_naissance' => 'required|date_format:Y-m-d|before:today',
             'adresse' => 'required|max:100|',
             'indicateur_promo' => 'max:1|required'
         ];

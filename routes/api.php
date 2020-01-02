@@ -23,3 +23,5 @@ Route::post('etudiant','EtudiantController@store');
 Route::patch('etudiant/{id}','EtudiantController@update');
 
 Route::delete('etudiant/{id}', 'EtudiantController@destroy');
+
+

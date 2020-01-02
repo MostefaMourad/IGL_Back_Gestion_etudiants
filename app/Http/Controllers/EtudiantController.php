@@ -45,7 +45,7 @@ class EtudiantController extends Controller
         $etudiant_save = $new_etudiant->save();
         if ($etudiant_save) {
             $response = APIHelpers::createAPIResponse(false, 201, 'Ajout avec succes', null);
-            return response()->json($response, 201);
+            return response()->json($new_etudiant, 201);
         } else {
             $response = APIHelpers::createAPIResponse(true, 400, 'echec', null);
             return response()->json($response, 400);
@@ -62,7 +62,7 @@ class EtudiantController extends Controller
     {
         $etudiant = Etudiant::find($id);
         if($etudiant==null){
-            $response = APIHelpers::createAPIResponse(false, 200, 'Etudiant introuvable', $etudiant);
+            $response = APIHelpers::createAPIResponse(true, 204,'Etudiant introuvable', $etudiant);
         }
         else{
             $response = APIHelpers::createAPIResponse(false, 200, 'Etudiant trouvee', $etudiant);
