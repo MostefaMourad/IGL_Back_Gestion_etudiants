@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('etudiant','EtudiantController@index');
-
-Route::get('etudiant/{id}','EtudiantController@show');
-
-Route::post('etudiant','EtudiantController@store');
-
-Route::patch('etudiant/{id}','EtudiantController@update');
-
-Route::delete('etudiant/{id}', 'EtudiantController@destroy');
-
+Route::group(['prefix' => 'etudiants'], function() {
+    Route::get('/', 'EtudiantController@index')->name('etudiants');
+    Route::get('/{id}', 'EtudiantController@show')->name('etudiants.show');
+    Route::post('/', 'EtudiantController@store')->name('etudiants.store');
+    Route::patch('/{id}', 'EtudiantController@update')->name('etudiants.update');
+    Route::delete('/{id}', 'EtudiantController@destroy')->name('etudiants.delete');
+});
 

@@ -44,8 +44,8 @@ class EtudiantController extends Controller
         $new_etudiant->indicateur_promo = $request->indicateur_promo;
         $etudiant_save = $new_etudiant->save();
         if ($etudiant_save) {
-            $response = APIHelpers::createAPIResponse(false, 201, 'Ajout avec succes', null);
-            return response()->json($new_etudiant, 201);
+            $response = APIHelpers::createAPIResponse(false, 201, 'Ajout avec succes', $new_etudiant);
+            return response()->json($response, 201);
         } else {
             $response = APIHelpers::createAPIResponse(true, 400, 'echec', null);
             return response()->json($response, 400);
@@ -62,7 +62,7 @@ class EtudiantController extends Controller
     {
         $etudiant = Etudiant::find($id);
         if($etudiant==null){
-            $response = APIHelpers::createAPIResponse(true, 204,'Etudiant introuvable', $etudiant);
+            $response = APIHelpers::createAPIResponse(true, 204,'Etudiant introuvable', null);
         }
         else{
             $response = APIHelpers::createAPIResponse(false, 200, 'Etudiant trouvee', $etudiant);
@@ -87,14 +87,18 @@ class EtudiantController extends Controller
         } else {
             $etudiant->email = $request->email;
             $etudiant->password = $request->password;
+            $etudiant->nom = $request->nom;
+            $etudiant->prenom = $request->prenom;
             $etudiant->niveau = $request->niveau;
             $etudiant->section = $request->section;
             $etudiant->groupe = $request->groupe;
             $etudiant->specialite = $request->specialite;
             $etudiant->adresse = $request->adresse;
+            $etudiant->date_naissance = $request->date_naissance;
+            $etudiant->indicateur_promo = $request->indicateur_promo;
             $etudiant_save = $etudiant->save();
             if ($etudiant_save) {
-                $response = APIHelpers::createAPIResponse(false, 200, 'Modification avec succes', null);
+                $response = APIHelpers::createAPIResponse(false, 200, 'Modification avec succes', $etudiant);
                 return response()->json($response, 200);
             } else {
                 $response = APIHelpers::createAPIResponse(true, 400, 'echec', null);
@@ -119,8 +123,8 @@ class EtudiantController extends Controller
 
             $etudiant_delete = $etudiant->delete();
             if ($etudiant_delete) {
-                $response = APIHelpers::createAPIResponse(false, 200, 'Suppression avec succes', null);
-                return response()->json($response, 200);
+                $response = APIHelpers::createAPIResponse(false, 204, 'Suppression avec succes', null);
+                return response()->json($response, 204);
             } else {
                 $response = APIHelpers::createAPIResponse(true, 400, 'echec', null);
                 return response()->json($response, 400);
