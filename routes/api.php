@@ -22,3 +22,5 @@ Route::group(['prefix' => 'etudiants'], function() {
     Route::delete('/{id}', 'EtudiantController@destroy')->name('etudiants.delete');
 });
 
+
+
